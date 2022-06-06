@@ -10,25 +10,25 @@ pub mod events;
 pub use crate::types::*;
 pub use crate::util::*;
 
-#[cfg(feature = "devnet")]
+#[cfg(not(feature = "mainnet"))]
 declare_id!("Zo1ThtSHMh9tZGECwBDL81WJRL6s3QTHf733Tyko7KQ");
 
-#[cfg(not(feature = "devnet"))]
+#[cfg(feature = "mainnet")]
 declare_id!("Zo1ggzTUKMY5bYnDvT5mtVeZxzf2FaLTbKkmvGUhUQk");
 
-pub static ZO_DEX_PID: Pubkey = match cfg!(feature = "devnet") {
-    true => pubkey!("ZDxUi178LkcuwdxcEqsSo2E7KATH99LAAXN5LcSVMBC"),
-    false => pubkey!("ZDx8a8jBqGmJyxi1whFxxCo5vG6Q9t4hTzW2GSixMKK"),
+pub static ZO_DEX_PID: Pubkey = match cfg!(feature = "mainnet") {
+    false => pubkey!("ZDxUi178LkcuwdxcEqsSo2E7KATH99LAAXN5LcSVMBC"),
+    true => pubkey!("ZDx8a8jBqGmJyxi1whFxxCo5vG6Q9t4hTzW2GSixMKK"),
 };
 
-pub static SERUM_DEX_PID: Pubkey = match cfg!(feature = "devnet") {
-    true => pubkey!("DESVgJVGajEgKGXhb6XmqDHGz3VjdgP7rEVESBgxmroY"),
-    false => pubkey!("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"),
+pub static SERUM_DEX_PID: Pubkey = match cfg!(feature = "mainnet") {
+    false => pubkey!("DESVgJVGajEgKGXhb6XmqDHGz3VjdgP7rEVESBgxmroY"),
+    true => pubkey!("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"),
 };
 
-pub static ZO_STATE_ID: Pubkey = match cfg!(feature = "devnet") {
-    true => pubkey!("KwcWW7WvgSXLJcyjKZJBHLbfriErggzYHpjS9qjVD5F"),
-    false => pubkey!("71yykwxq1zQqy99PgRsgZJXi2HHK2UDx9G4va7pH6qRv"),
+pub static ZO_STATE_ID: Pubkey = match cfg!(feature = "mainnet") {
+    false => pubkey!("KwcWW7WvgSXLJcyjKZJBHLbfriErggzYHpjS9qjVD5F"),
+    true => pubkey!("71yykwxq1zQqy99PgRsgZJXi2HHK2UDx9G4va7pH6qRv"),
 };
 
 #[program]
